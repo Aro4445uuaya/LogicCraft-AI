@@ -101,6 +101,14 @@ app.get("/", (req, res) => {
     res.sendFile(path.join(frontendPath, "index.html"));
 });
 
+app.get("/login.html", (req, res) => {
+    res.sendFile(path.join(frontendPath, "login.html"));
+});
+
+app.get("/dashboard.html", (req, res) => {
+    res.sendFile(path.join(frontendPath, "dashboard.html"));
+});
+
 // ===============================
 // SAVE GOOGLE USER
 // ===============================
