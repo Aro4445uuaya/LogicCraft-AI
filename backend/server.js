@@ -16,18 +16,24 @@ const {GoogleGenAI, Type}=
 require("@google/genai");
 
 const nodemailer = require("nodemailer");
+const { Resend } = require("resend");
+
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 const transporter = nodemailer.createTransport({
-    host: "smtp.gmail.com",
-    port: 465,
-    secure: true,
-    family: 4,
-    auth: {
-        user: process.env.ADMIN_EMAIL,
-        pass: process.env.ADMIN_EMAIL_PASSWORD
-    }
-});
+  host: "smtp.gmail.com",
+  port: 465,
+  secure: true,
 
+  auth: {
+    user: process.env.ADMIN_EMAIL,
+    pass: process.env.ADMIN_PASSWORD
+  },
+
+  tls: {
+    rejectUnauthorized: false
+  }
+});
 const ai = new GoogleGenAI({
     apiKey:process.env.GEMINI_API_KEY
 });
@@ -170,19 +176,25 @@ app.post("/api/contact", async (req, res) => {
             });
         }
 
-        await transporter.sendMail({
-            from: process.env.ADMIN_EMAIL,
-            to: process.env.ADMIN_EMAIL,
-            replyTo: email,
-            subject: `LogicCraft Contact: ${name}`,
-            text: `
-Name: ${name}
+       const { data, error } = await resend.emails.send({
+    from: "LogicCraft <onboarding@resend.dev>",
+    to: [process.env.ADMIN_EMAIL],
+    replyTo: email,
+    subject: `LogicCraft Contact: ${name}`,
+    text: `Name: ${name}
 Email: ${email}
 
 Message:
-${message}
-            `
-        });
+${message}`
+});
+
+if (error) {
+    console.error("Contact form error:", error);
+    return res.status(500).json({
+        success: false,
+        message: "Unable to send message"
+    });
+}
 
         res.json({
             success: true,
