@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+const path = require("path");
 require("dotenv").config();
 const mongoose = require("mongoose");
 
@@ -88,8 +89,16 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+const frontendPath = path.join(__dirname, "..");
+
+app.use("/css", express.static(path.join(frontendPath, "css")));
+app.use("/js", express.static(path.join(frontendPath, "js")));
+app.use("/images", express.static(path.join(frontendPath, "images")));
+app.use("/dist", express.static(path.join(frontendPath, "dist")));
+
+
 app.get("/", (req, res) => {
-    res.send("LogicCraft AI Backend is running 🚀");
+    res.sendFile(path.join(frontendPath, "index.html"));
 });
 
 // ===============================
@@ -353,7 +362,7 @@ app.delete("/api/reviews/user/:googleId", async (req, res) => {
 
 
 
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
     console.log(`Server running at http://localhost:${PORT}`);

@@ -117,7 +117,7 @@ analyzeBtn.addEventListener("click", async () => {
     try {
 
         const response = await fetch(
-            "http://localhost:3000/api/chat",
+            "https://logiccraft-ai.onrender.com/api/chat",
             {
                 method: "POST",
 
@@ -325,7 +325,7 @@ async function getUserReviews() {
     }
 
     const response = await fetch(
-        `http://localhost:3000/api/reviews/${user.googleId}`
+       `https://logiccraft-ai.onrender.com/api/reviews/${user.googleId}`
     );
 
     if (!response.ok) {
@@ -386,7 +386,7 @@ document.querySelectorAll(".delete-review-btn").forEach(button => {
         try {
 
             const response = await fetch(
-                `http://localhost:3000/api/reviews/${reviewId}`,
+                `https://logiccraft-ai.onrender.com/api/reviews/${reviewId}`,
                 {
                     method: "DELETE"
                 }
@@ -499,7 +499,7 @@ clearHistoryBtn.addEventListener("click", async () => {
     try {
 
         const response = await fetch(
-            `http://localhost:3000/api/reviews/user/${user.googleId}`,
+           `https://logiccraft-ai.onrender.com/api/reviews/user/${user.googleId}`,
             {
                 method: "DELETE"
             }
