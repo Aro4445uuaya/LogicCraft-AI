@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    
+
+    <title>Dashboard | LogicCraft AI</title>
+
+    <link rel="stylesheet" href="css/dashboard.css">
+     <link rel="stylesheet" href="css/review.css">
+</head>
+
+<body>
+
+
+<nav class="navbar">
+    <div class="logo">
+        <h2>🤖 LogicCraft AI</h2>
+    </div>
+
+    <div class="user-section">
+        <img id="userPhoto" src="https://via.placeholder.com/40" alt="Profile">
+        <span id="userName">Welcome</span>
+        <button id="logoutBtn">Logout</button>
+    </div>
+</nav>
+
+
+<div class="dashboard">
+
+    <div class="editor-section">
+
+        <h2>AI Code Review</h2>
+
+        <div class="language-select">
+    <label>Select Language</label>
+
+    <select id="language">
+        <option value="java">Java</option>
+        <option value="python">Python</option>
+        <option value="cpp">C++</option>
+        <option value="javascript">JavaScript</option>
+        <option value="html">HTML</option>
+        <option value="css">CSS</option>
+    </select>
+</div>
+
+        <div id="codeEditor"></div>
+        <div class="buttons">
+
+            <input
+    type="file"
+    id="fileInput"
+    accept=".java,.py,.cpp,.js,.html,.css"
+    hidden
+>
+
+<button id="uploadBtn">
+    Upload File
+</button>
+
+           
+
+            <button id="analyzeBtn">
+                Analyze Code
+            </button>
+
+        </div>
+
+    </div>
+
+    <div class="result-section">
+
+        <h2>AI Analysis</h2>
+
+        <div id="resultBox">
+
+            Your AI report will appear here...
+
+        </div>
+
+    </div>
+
+</div>
+
+
+ <h2>📜 Review History</h2>
+
+    <div id="historyList">
+        <p>No reviews yet.</p>
+    </div>
+
+    <button id="clearHistoryBtn">
+    🗑️ Clear History
+</button>
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.52.2/min/vs/loader.min.js"></script>
+
+<script src="js/dashboard.js"></script>
+
+
+   
+</section>
+
+</body>
+</html>
+

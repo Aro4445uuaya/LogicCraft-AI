@@ -1,0 +1,61 @@
+
+
+@media (max-width: 768px) {
+
+    .dashboard {
+        grid-template-columns: 1fr !important;
+        gap: 20px;
+        padding: 15px;
+    }
+
+    .editor-section,
+    .result-section {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .navbar {
+        padding: 15px;
+    }
+
+    .logo h2 {
+        font-size: 18px;
+    }
+
+    .user-section {
+        gap: 8px;
+    }
+
+    #userName {
+        display: none;
+    }
+
+}
+
+@media (max-width: 768px) {
+
+    html,
+    body {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+    .dashboard {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        grid-template-columns: 1fr !important;
+        padding: 15px;
+        box-sizing: border-box;
+    }
+
+    .editor-section,
+    .result-section {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        box-sizing: border-box;
+    }
+
+}
