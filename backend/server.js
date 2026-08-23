@@ -18,11 +18,14 @@ require("@google/genai");
 const nodemailer = require("nodemailer");
 
 const transporter = nodemailer.createTransport({
-  service: "gmail",
-  auth: {
-    user: process.env.ADMIN_EMAIL,
-    pass: process.env.ADMIN_EMAIL_PASSWORD
-  }
+    host: "smtp.gmail.com",
+    port: 587,
+    secure: false,
+    family: 4,
+    auth: {
+        user: process.env.ADMIN_EMAIL,
+        pass: process.env.ADMIN_EMAIL_PASSWORD
+    }
 });
 
 const ai = new GoogleGenAI({
