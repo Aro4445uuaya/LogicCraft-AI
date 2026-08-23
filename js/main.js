@@ -64,8 +64,7 @@ contactForm.addEventListener("submit", async (event) => {
 
     try {
 
-        const response = await fetch(
-            "http://localhost:3000/api/contact",
+        const response = await fetch("https://logiccraft-ai.onrender.com/api/contact", 
             {
                 method: "POST",
 
